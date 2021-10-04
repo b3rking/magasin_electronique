@@ -2,4 +2,10 @@
 @section('page', "page d'accueil")
 @section('content')
     <h1>bienvenue chez Electro Mag</h1>
+    @foreach($users as $user)
+      <div class="">
+        <h3>{{ $user->name }}</h3>
+        <p>role : {{ $user->role->name }}</p>
+      </div>
+    @endforeach
 @endsection
