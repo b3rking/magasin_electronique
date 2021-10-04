@@ -5,6 +5,11 @@
   <form action="{{ route('users.store') }}" method="post">
     @csrf
     <h2>creer un nouveau utilisateur</h2>
+    @if($errors->any())
+      @foreach($errors->all() as $error)
+        {{ $error }}
+      @endforeach
+    @endif
     <div class="">
       <label for="name">nom</label>
       <input type="text" name="name">

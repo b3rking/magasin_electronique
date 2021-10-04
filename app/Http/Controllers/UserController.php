@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -39,7 +40,7 @@ class UserController extends Controller
     {
         $cred = $request->validate([
           'password' => 'required|min:5',
-          'name' => 'required|6'
+          'name' => 'required|min:6'
         ]);
 
         User::create($request->all());
