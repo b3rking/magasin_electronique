@@ -92,7 +92,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('update_user')
-                ->with('user', $user);
+                ->with('user', $user)
+                ->with('roles', Role::all());
     }
 
     /**
@@ -106,10 +107,12 @@ class UserController extends Controller
     {
       $cred = $request->validate([
         'password' => 'required|min:5',
-        'name' => 'required|6'
+        'name' => 'required|min:6'
       ]);
 
       $user->update($request->all());
+
+      return redirect()->route('home');
     }
 
     /**

@@ -16,6 +16,6 @@ use App\Models\User;
 Route::get('/', function () {
     return view('home')
             ->with('users', User::all());
-});
+})->name('home');
 
 Route::resource('users', 'App\Http\Controllers\UserController');
