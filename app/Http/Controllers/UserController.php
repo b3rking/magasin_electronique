@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('new_user');
+        return view('new_user')
+                ->with('roles', Role::all());
     }
 
     /**
@@ -49,8 +51,8 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-          'errors' => 'credentials not valid';
-        ])
+          'errors' => 'credentials not valid'
+        ]);
     }
 
     /**
@@ -61,7 +63,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return $user;
     }
 
     /**
@@ -72,7 +74,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('update_user')
+                ->with('user', $user);
     }
 
     /**
@@ -84,7 +87,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+      $cred = $request->validate([
+        'password' => 'required|min:5',
+        'name' => 'required|6'
+      ]);
+
+      $user->update($request->all());
     }
 
     /**
@@ -95,6 +103,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
     }
 }
