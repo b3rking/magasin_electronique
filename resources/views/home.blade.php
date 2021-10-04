@@ -7,6 +7,11 @@
         <h3>{{ $user->name }}</h3>
         <p>role : {{ $user->role->name }}</p>
         <p> <a href="{{ route('users.edit', $user->id) }}">modifier</a></p>
+        <form action="{{ route('users.destroy', $user->id) }}" method="post">
+          @csrf
+          @method('delete')
+          <button type="submit" name="button">supprimer</button>
+        </form>
       </div>
     @endforeach
 @endsection
