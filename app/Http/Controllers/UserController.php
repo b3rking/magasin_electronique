@@ -10,6 +10,27 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+    */
+    public function login()
+    {
+        $cred = $request->validate([
+          'name', 'required',
+          'password', 'required'
+        ]);
+
+        if (Auth::attempt($cred, true)) {
+          $request->session()->regenerate();
+
+          return redirect()->route('/');
+        }
+
+        return back()->withErrors([
+          'errors' => 'credentials not valid'
+        ]);
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,22 +59,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $cred = $request->validate([
+        $request->validate([
           'password' => 'required|min:5',
           'name' => 'required|min:6'
         ]);
 
-        User::create($request->all());
+        $cred = $request->all();
+        $cred['password'] = bcrypt($request->password);
 
-        if (Auth::attempt($cred)) {
-          $request->session()->regenerate();
+        User::create($cred);
 
-          return redirect()->route('/');
-        }
-
-        return back()->withErrors([
-          'errors' => 'credentials not valid'
-        ]);
+        return redirect()->intended('/');
     }
 
     /**
