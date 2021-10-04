@@ -35,7 +35,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cred = $request->validate([
+          'password' => 'required|min:5',
+          'name' => 'required|6'
+        ]);
+
+        User::create($request->all());
+
+        if (Auth::attempt($cred)) {
+          $request->session()->regenerate();
+
+          return redirect()->route('/');
+        }
+
+        return back()->withErrors([
+          'errors' => 'credentials not valid';
+        ])
     }
 
     /**
