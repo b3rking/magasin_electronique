@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Role;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Fournisseur;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class FournisseurController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return view('fournisseur.read')
+                ->with('fournisseurs', Fournisseur::all());
     }
 
     /**
@@ -26,8 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('new_user')
-                ->with('roles', Role::all());
+        return view('fournisseur.new_supplier');
     }
 
     /**
@@ -39,71 +37,62 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'password' => 'required|min:5',
-          'name' => 'required|min:6'
+            'nomfournisseur' => 'required'
         ]);
 
-        $cred = $request->all();
-        $cred['password'] = bcrypt($request->password);
+        Fournisseur::create($request->all());
 
-        User::create($cred);
-
-        return redirect()->intended('/');
+        return redirect()->route('fournisseurs.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Fournisseur $fournisseur)
     {
-        return $user;
+        return view('fournisseur.one')
+                ->with('fournisseur', $fournisseur);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Fournisseur $fournisseur)
     {
-        return view('update_user')
-                ->with('user', $user)
-                ->with('roles', Role::all());
+        return view('fournisseur.update')
+                ->with('fournisseur', $fournisseur);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Fournisseur $fournisseur)
     {
-      $cred = $request->validate([
-        'password' => 'required|min:5',
-        'name' => 'required|min:6'
-      ]);
+        $fournisseur->update($request->all());
 
-      $user->update($request->all());
-
-      return redirect()->route('home');
+        return redirect()->route('fournisseurs.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Fournisseur $fournisseur)
     {
-        $user->delete();
+        $fournisseur->delete();
 
-        return back();
+        return redirect()->route('fournisseurs.index');
     }
 }
