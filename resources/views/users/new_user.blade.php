@@ -12,18 +12,25 @@
     @endif
     <div class="">
       <label for="name">nom</label>
-      <input type="text" name="name">
+      <input type="text" name="nomemploye">
+    </div>
+    <div class="">
+        <label for="prenomemploye">prenom</label>
+        <input type="text" name="prenomemploye" id="">
     </div>
     <div class="">
       <label for="name">password</label>
       <input type="password" name="password">
     </div>
     <div class="">
+        <label for="numtel">numero de tel</label>
+        <input type="text" name="numtel">
+    </div>
+    <div class="">
       <label for="name">role</label>
-      <select name="role_id">
-        @foreach($roles as $role)
-          <option value="{{ $role->id }}">{{ $role->name }}</option>
-        @endforeach
+      <select name="role">
+          <option value="Gérant">Gérant</option>
+          <option value="Employée">Employée</option>
       </select>
     </div>
     <button type="submit" name="button">Creer un user!</button>

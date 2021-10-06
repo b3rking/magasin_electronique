@@ -4,8 +4,8 @@
     <h1>bienvenue chez Electro Mag</h1>
     @foreach($users as $user)
       <div class="">
-        <h3>{{ $user->name }}</h3>
-        <p>role : {{ $user->role->name }}</p>
+        <h3>{{ $user->nomemploye }}</h3>
+        <p>role : {{ $user->role }}</p>
         <p> <a href="{{ route('users.edit', $user->id) }}">modifier</a></p>
         <form action="{{ route('users.destroy', $user->id) }}" method="post">
           @csrf

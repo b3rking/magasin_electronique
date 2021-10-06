@@ -1,3 +1,4 @@
+@extends('app')
 <form action="{{ route('factures.update', $facture->id) }}" method="POST">
     <h2>modifier facture</h2>
     @if($errors->any())

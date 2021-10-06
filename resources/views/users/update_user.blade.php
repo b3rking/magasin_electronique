@@ -12,21 +12,28 @@
       @endforeach
     @endif
     <div class="">
-      <label for="name">nom</label>
-      <input type="text" name="name" value="{{ $user->name }}">
-    </div>
-    <div class="">
-      <label for="name">password</label>
-      <input type="password" name="password" value="********">
-    </div>
-    <div class="">
-      <label for="name">role</label>
-      <select name="role_id">
-        @foreach($roles as $role)
-          <option value="{{ $role->id }}" {{ ($role->id === $user->role_id) ? "selected" : "" }}>{{ $role->name }}</option>
-        @endforeach
-      </select>
-    </div>
+        <label for="name">nom</label>
+        <input type="text" name="nomemploye" value="{{ $user->nomemploye }}">
+      </div>
+      <div class="">
+          <label for="prenomemploye">prenom</label>
+          <input type="text" name="prenomemploye" id="" value="{{ $user->prenomemploye }}">
+      </div>
+      <div class="">
+        <label for="name">password</label>
+        <input type="password" name="password" placeholder="****">
+      </div>
+      <div class="">
+          <label for="numtel">numero de tel</label>
+          <input type="text" name="numtel" value="{{ $user->numtel }}">
+      </div>
+      <div class="">
+        <label for="name">role</label>
+        <select name="role">
+            <option value="Gérant">Gérant</option>
+            <option value="Employée">Employée</option>
+        </select>
+      </div>
     <button type="submit" name="button">Modifier!</button>
   </form>
 

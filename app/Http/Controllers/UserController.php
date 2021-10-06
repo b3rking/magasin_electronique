@@ -26,8 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('new_user')
-                ->with('roles', Role::all());
+        return view('users.new_user');
     }
 
     /**
@@ -39,8 +38,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'password' => 'required|min:5',
-          'name' => 'required|min:6'
+            'password' => 'required|min:5',
+            'nomemploye' => 'required|min:6',
+            'prenomemploye' => 'required'
         ]);
 
         $cred = $request->all();
@@ -70,9 +70,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('update_user')
-                ->with('user', $user)
-                ->with('roles', Role::all());
+        return view('users.update_user')
+                ->with('user', $user);
     }
 
     /**
@@ -84,14 +83,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-      $cred = $request->validate([
-        'password' => 'required|min:5',
-        'name' => 'required|min:6'
-      ]);
+        $request->validate([
+            'password' => 'required|min:5',
+            'nomemploye' => 'required|min:6',
+            'prenomemploye' => 'required'
+        ]);
 
-      $user->update($request->all());
+        $user->update($request->all());
 
-      return redirect()->route('home');
+        return redirect()->route('home');
     }
 
     /**

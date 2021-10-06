@@ -25,11 +25,6 @@ class AppController extends Controller
       ]);
   }
 
-  public function login()
-  {
-    return view('login');
-  }
-
   public function logout(Request $request)
   {
       Auth::logout();

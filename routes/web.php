@@ -12,21 +12,18 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('login', function() {
+    return view('login');
+})->name('loginPage');
 
+Route::post('loginUser', 'App\Http\Controllers\AppController@login')->name('login');
 
 Route::get('/', function () {
       return view('home')
               ->with('users', User::all());
 })->name('home');
 
-
 Route::resource('users', 'App\Http\Controllers\UserController');
-
-// Route::post('loginUser', 'App\Http\Controllers\AppController@loginUser')->name('login');
-
-// Route::post('login', 'App\Http\Controllers\AppController@login')->name('loginUser');
-
-// Route::post('logout', 'App\Http\Controllers\AppController@logout')->name('logout');
 
 Route::resource('fournisseurs', 'App\Http\Controllers\FournisseurController');
 

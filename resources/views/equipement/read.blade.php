@@ -1,3 +1,4 @@
+@extends('app')
 <h2>liste des equipements</h2>
 <ul>
     @foreach ($equipements as $fr)

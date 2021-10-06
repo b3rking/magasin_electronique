@@ -1,3 +1,4 @@
+@extends('app')
 <form action="{{ route('fournisseurs.update', $fournisseur->id) }}" method="POST">
     <h2>nouveau fournisseur</h2>
     @if($errors->any())

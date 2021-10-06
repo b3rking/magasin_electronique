@@ -1,3 +1,4 @@
+@extends('app')
 <form action="{{ route('factures.store') }}" method="POST">
     <h2>nouvelle facture</h2>
     @if($errors->any())
