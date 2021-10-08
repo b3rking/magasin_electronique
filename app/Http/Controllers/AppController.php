@@ -7,25 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
-  public function loginUser(Request $request)
-  {
-      $cred = $request->validate([
-        'nomemploye', 'required',
-        'password', 'required'
-      ]);
+    public function authenticate(Request $request) {
+        $credentials = $request->validate([
+            'nomemploye' => 'required|max:20|min:5',
+            'password' => 'required'
+        ]);
 
-      return $cred;
+        if (Auth::attempt($credentials, true)) {
 
-      if (Auth::attempt($cred, true)) {
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        return redirect()->route('/');
-      }
+            return redirect()->intended('home');
+        }
 
-    //   return back()->withErrors([
-    //     'errors' => 'credentials not valid'
-    //   ]);
-  }
+        return back()->withErrors(['message' => 'Je vous reconnais pas!']);
+    }
 
   public function logout(Request $request)
   {

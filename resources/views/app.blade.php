@@ -32,6 +32,12 @@
     <h1 style="text-align: center">Electro Mag</h1>
     <header>
         <a href="{{ route('home') }}">Accueil</a>
+        @auth
+            <a href="{{ route('logout') }}">deconnexion</a>
+        @endauth
+        @guest
+            <a href="{{ route('login') }}">connexion</a>
+        @endguest
         <div class="">
             <h3>links</h3>
             <p><a href="{{ route('fournisseurs.index') }}">liste des fournisseurs!</a></p>

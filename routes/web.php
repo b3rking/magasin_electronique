@@ -16,17 +16,23 @@ Route::get('login', function() {
     return view('login');
 })->name('loginPage');
 
-Route::post('loginUser', 'App\Http\Controllers\AppController@loginUser')->name('login');
+Route::post('authenticate', 'App\Http\Controllers\AppController@authenticate')->name('authenticate');
 
-Route::get('/', function () {
-      return view('home')
-              ->with('users', User::all());
-})->name('home');
+Route::post('logout', 'App\Http\Controllers\AppController@logout')->name('logout');
 
-Route::resource('users', 'App\Http\Controllers\UserController');
 
-Route::resource('fournisseurs', 'App\Http\Controllers\FournisseurController');
+Route::middleware('auth')->group(function() {
 
-Route::resource('equipements', 'App\Http\Controllers\EquipementController');
+    Route::get('/', function () {
+        return view('home')
+                ->with('users', User::all());
+    })->name('home');
 
-Route::resource('factures', 'App\Http\Controllers\FactureController');
+    Route::resource('users', 'App\Http\Controllers\UserController');
+
+    Route::resource('fournisseurs', 'App\Http\Controllers\FournisseurController');
+
+    Route::resource('equipements', 'App\Http\Controllers\EquipementController');
+
+    Route::resource('factures', 'App\Http\Controllers\FactureController');
+});
