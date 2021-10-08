@@ -5,7 +5,9 @@
 <h2>liste des utilisateurs</h2>
 <ul>
     @foreach ($users as $us)
-        <li>nom du utilisateur : {{ $us->nomemploye }}</li>
+        <li><h4>nom de l'utilisateur : {{ $us->nomemploye }}</h4></li>
+        <li>prenom de l'utilisateur : {{ $us->prenomemploye }}</li>
+        <li>role de l'utilisateur : {{ $us->role }}</li>
         <form action="{{ route('users.destroy', $us->id) }}" method="POST">
             @csrf
             @method('delete')
