@@ -10,15 +10,7 @@
         @endforeach
     @endif
     @csrf
-    <div class="">
-        <label for="name">nom du de l'equipement</label>
-        <select name="equipement" id="">
-            @foreach ($equipements as $eq)
-                <option value="{{ $eq->nomequipement }}">{{ $eq->nomequipement }}</option>
-            @endforeach
-        </select>
-    </div>
-
+    
     <div class="">
         <label for="montant">montant</label>
         <input type="text" name="montant" id="">
@@ -34,6 +26,15 @@
         <input type="text" name="quantité" id="">
     </div>
 
+    <div class="">
+        <label for="name">nom du de l'equipement</label>
+        <select name="equipement" id="">
+            @foreach ($equipements as $eq)
+                <option value="{{ $eq->nomequipement }}">{{ $eq->nomequipement }}</option>
+            @endforeach
+        </select>
+    </div>
+    
     <button type="submit">ajouter un equipement</button>
 </form>
 

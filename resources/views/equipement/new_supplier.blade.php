@@ -16,15 +16,6 @@
         </div>
 
         <div class="">
-            <label for="fournisseur">fournisseur</label>
-            <select name="fournisseur">
-                @foreach ($fournisseurs as $fs)
-                    <option value="{{ $fs->nomfournisseur }}">{{ $fs->nomfournisseur }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="">
             <label for="marque">marque</label>
             <input type="text" name="marque" id="">
         </div>
@@ -37,6 +28,15 @@
         <div class="">
             <label for="quantité">quantité</label>
             <input type="text" name="quantité" id="">
+        </div>
+
+        <div class="">
+            <label for="fournisseur">fournisseur</label>
+            <select name="fournisseur">
+                @foreach ($fournisseurs as $fs)
+                    <option value="{{ $fs->nomfournisseur }}">{{ $fs->nomfournisseur }}</option>
+                @endforeach
+            </select>
         </div>
 
         <button type="submit">ajouter un equipement</button>
