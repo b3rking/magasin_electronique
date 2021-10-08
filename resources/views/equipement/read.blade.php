@@ -1,4 +1,6 @@
 @extends('app')
+@section('page', 'liste des factures')
+@section('content')
 <h2>liste des equipements</h2>
 <ul>
     @foreach ($equipements as $fr)
@@ -10,3 +12,4 @@
         </form>
     @endforeach
 </ul>
+@endsection

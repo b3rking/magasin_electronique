@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Equipement;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 /*
@@ -25,7 +26,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/', function () {
         return view('home')
-                ->with('users', User::all());
+                ->with('equipements', Equipement::all());
     })->name('home');
 
     Route::resource('users', 'App\Http\Controllers\UserController');

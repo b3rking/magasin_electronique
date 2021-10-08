@@ -1,4 +1,6 @@
 @extends('app')
+@section('page', 'liste des factures')
+@section('content')
 
 <h2>liste des fournisseurs</h2>
 <ul>
@@ -11,3 +13,5 @@
         </form>
     @endforeach
 </ul>
+
+@endsection

@@ -1,17 +1,9 @@
 @extends('app')
-@section('page', "page d'accueil")
+@section('page', 'page de bienvenue')
 @section('content')
-    <h1>bienvenue chez Electro Mag</h1>
-    @foreach($users as $user)
-      <div class="">
-        <h3>{{ $user->nomemploye }}</h3>
-        <p>role : {{ $user->role }}</p>
-        <p> <a href="{{ route('users.edit', $user->id) }}">modifier</a></p>
-        <form action="{{ route('users.destroy', $user->id) }}" method="post">
-          @csrf
-          @method('delete')
-          <button type="submit" name="button">supprimer</button>
-        </form>
-      </div>
-    @endforeach
+
+    <h2>bienvenue chez Electro Mag</h2>
+    <p style="margin-top: 10px; font-size: 1.1rem">
+        veuillez choisir une action a faire sur le cote droit de l'interface.
+    </p>
 @endsection

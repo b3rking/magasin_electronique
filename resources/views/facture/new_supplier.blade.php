@@ -1,4 +1,7 @@
 @extends('app')
+@section('page', 'nouvelle facture')
+@section('content')
+
 <form action="{{ route('factures.store') }}" method="POST">
     <h2>nouvelle facture</h2>
     @if($errors->any())
@@ -33,3 +36,5 @@
 
     <button type="submit">ajouter un equipement</button>
 </form>
+
+@endsection
