@@ -10,7 +10,7 @@ class Equipement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nomequipement', 'marque', 'prixequipement', 'quantité', 'datelivraison', 'marque'
+        'nomequipement', 'marque', 'prixequipement', 'quantité', 'datelivraison', 'marque', 'fournisseur'
     ];
 
     public function facture()

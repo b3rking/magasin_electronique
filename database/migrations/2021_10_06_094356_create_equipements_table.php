@@ -18,6 +18,7 @@ class CreateEquipementsTable extends Migration
             $table->string('nomequipement');
             $table->string('marque');
             $table->integer('prixequipement');
+            $table->string('fournisseur');
             $table->integer('quantité');
             $table->timestamp('datelivraison')->useCurrent();
             $table->timestamps();

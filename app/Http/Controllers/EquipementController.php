@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipement;
 use Illuminate\Http\Request;
+use App\Models\Fournisseur;
 
 class EquipementController extends Controller
 {
@@ -25,7 +26,8 @@ class EquipementController extends Controller
      */
     public function create()
     {
-        return view('equipement.new_supplier');
+        return view('equipement.new_supplier')
+                ->with('fournisseurs', Fournisseur::all());
     }
 
     /**

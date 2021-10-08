@@ -1,4 +1,5 @@
 @extends('app')
+@section('page', 'nouveau equipement')
 @section('content')
 
     <form action="{{ route('equipements.store') }}" method="POST">
@@ -12,6 +13,15 @@
         <div class="">
             <label for="name">nom du de l'equipement</label>
             <input type="text" name="nomequipement" id="">
+        </div>
+
+        <div class="">
+            <label for="fournisseur">fournisseur</label>
+            <select name="fournisseur">
+                @foreach ($fournisseurs as $fs)
+                    <option value="{{ $fs->nomfournisseur }}">{{ $fs->nomfournisseur }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="">
