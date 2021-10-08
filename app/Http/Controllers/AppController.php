@@ -10,9 +10,11 @@ class AppController extends Controller
   public function loginUser(Request $request)
   {
       $cred = $request->validate([
-        'name', 'required',
+        'nomemploye', 'required',
         'password', 'required'
       ]);
+
+      return $cred;
 
       if (Auth::attempt($cred, true)) {
         $request->session()->regenerate();
@@ -20,9 +22,9 @@ class AppController extends Controller
         return redirect()->route('/');
       }
 
-      return back()->withErrors([
-        'errors' => 'credentials not valid'
-      ]);
+    //   return back()->withErrors([
+    //     'errors' => 'credentials not valid'
+    //   ]);
   }
 
   public function logout(Request $request)

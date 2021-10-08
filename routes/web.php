@@ -16,7 +16,7 @@ Route::get('login', function() {
     return view('login');
 })->name('loginPage');
 
-Route::post('loginUser', 'App\Http\Controllers\AppController@login')->name('login');
+Route::post('loginUser', 'App\Http\Controllers\AppController@loginUser')->name('login');
 
 Route::get('/', function () {
       return view('home')
