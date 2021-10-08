@@ -100,8 +100,8 @@ class FactureController extends Controller
      */
     public function destroy(Facture $facture)
     {
-        $facture->delete();
+        // $facture->delete();
 
-        return redirect()->route('factures.index');
+        // return redirect()->route('factures.index');
     }
 }

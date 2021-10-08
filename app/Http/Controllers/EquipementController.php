@@ -37,7 +37,7 @@ class EquipementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nomequipement' => 'required',
+            'nomequipement' => 'required|unique:equipements',
             'marque' => 'required',
             'prixequipement' => 'required',
             'quantité' => 'required|min:1'
