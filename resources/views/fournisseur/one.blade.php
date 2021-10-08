@@ -1,2 +1,5 @@
 @extends('app')
-<p>nom du  fournisseur {{ $fournisseur->nomfournisseur }}</p>
+@section('page', $fournisseur->nomfournisseur)
+@section('content')    
+    <p>nom du  fournisseur {{ $fournisseur->nomfournisseur }}</p>
+@endsection
