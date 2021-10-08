@@ -14,11 +14,11 @@ use App\Models\User;
 */
 Route::get('login', function() {
     return view('login');
-})->name('loginPage');
+})->name('login');
 
 Route::post('authenticate', 'App\Http\Controllers\AppController@authenticate')->name('authenticate');
 
-Route::post('logout', 'App\Http\Controllers\AppController@logout')->name('logout');
+Route::get('logout', 'App\Http\Controllers\AppController@logout')->name('logout');
 
 
 Route::middleware('auth')->group(function() {

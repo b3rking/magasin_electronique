@@ -33,7 +33,7 @@
     <header>
         <a href="{{ route('home') }}">Accueil</a>
         @auth
-            <a href="{{ route('logout') }}">deconnexion</a>
+            <a class="dropdown-item" href="{{ route('logout') }}">deconnexion</a>
         @endauth
         @guest
             <a href="{{ route('login') }}">connexion</a>
