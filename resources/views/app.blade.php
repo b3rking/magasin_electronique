@@ -21,6 +21,7 @@
         }
         body {
             font-family: 'Lato', sans-serif;
+            overflow: hidden;
         }
 
         h1:not(.mh), h2:not(.mh), h3:not(.mh) {
@@ -45,7 +46,7 @@
             flex-direction: row;
             justify-content: space-evenly;
             /* align-items: center; */
-            margin-bottom: 15px;
+            /* margin-bottom: 15px; */
         }
 
         .main-title a {
@@ -61,17 +62,22 @@
         }
 
         .right{
-            width: 70%;
+            width: 80%;
             float: right;
+            padding-left: 20px;
             /* text-align: center; */
         }
 
         
 
         .left{
-            width: 30%;
+            width: 20%;
             float: left;
             text-align: left;
+            background: rgb(68, 68, 68);
+            color: white;
+            height: 100vh;
+            padding-top: 10px;
         }
 
         .left a {
@@ -95,6 +101,7 @@
         label {
             margin-right: 20px;
             font-size: 1.2rem;
+            text-transform: capitalize;
         }
 
         input {
